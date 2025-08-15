@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let num = prompt("nhap so nguyen n");
+    const isPrime = (num) =>{
+        if(num<=1){
+            return false
+        }
+        for(let i=2 ; i<=Math.sqrt(num) ; i++){
+            if(num%i==0){
+                return false
+            }
+        }
+        return true
+    }
+    if(isPrime(num)){
+        console.log(num + " is prime");
+    }else {
+        console.log(num + " not is prime");
+    }
+    let arr = [1,2,3,4,5]
+    const arr1 = arr.filter(isPrime);
+    console.log(arr1);
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const person = {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30,
+        gender: 'Male',
+        occupation: 'developer',
+        nationality: 'American',
+        city: 'New York',
+        hobbies: ['reading', 'watching', 'playing'],
+        language: ['English','Spanish'],
+        education: {
+            degree: 'Bachelor',
+            major: 'Computer Science',
+            university: 'Harvard University',
+        }
+    }
+    const {
+        firstName,
+        gender,
+        education:{degree},
+        language: [english],
+    }=person;
+    const student = {
+        firstName,
+        gender,
+        degree,
+        english
+    };
+    console.log(student);
+</script>
+</body>
+</html>
