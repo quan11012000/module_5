@@ -8,7 +8,6 @@ export default function PersonList() {
     const dispatch = useDispatch();
     const { persons, loading } = useSelector((state) => state.person);
     const [editingPerson, setEditingPerson] = useState(null);
-
     useEffect(() => {
         dispatch(fetchPersons());
     }, [dispatch]);
