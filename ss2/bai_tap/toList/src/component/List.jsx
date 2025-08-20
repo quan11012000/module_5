@@ -3,7 +3,6 @@ import React, { useState } from "react";
 function List() {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState("");
-
     const handleAdd = () => {
         if (!newTask.trim()) return;
         setTasks([...tasks, { id: Date.now(), title: newTask }]);
