@@ -1,21 +1,32 @@
 import React, {useEffect, useState} from "react";
 import * as bookService from "../service/bookService.js";
+import * as typeBookService from "../service/typeBookService.js";
 import {useNavigate} from "react-router-dom";
+import {Field} from "formik";
 
 const BookList = () => {
     const [books, setBooks] = useState([]);
+    const [typeBook, setTypeBook] = useState([]);
     const [deleteId, setDeleteId] = useState(0);
     const [search, setSsearch] = useState("");
+    const [selectTypeBook, setselectTypeBook] = useState("");
     const navigate = useNavigate();
     //xoa
     const [open, setOpen] = useState(false);
+    useEffect(() =>{
+        const getAllTypeBooks = async () => {
+            const temp = await typeBookService.getAllTypeBook();
+            setTypeBook(temp);
+        }
+        getAllTypeBooks();
+    },[])
     useEffect(() => {
-        const getAllBook = async (search) => {
-            const temp = await bookService.getAllBookByTitle(search);
+        const getAllBook = async (search,selectTypeBook) => {
+            const temp = await bookService.getAllBookByTitle(search,selectTypeBook);
             setBooks(temp);
         }
-        getAllBook(search);
-    },[search]);
+        getAllBook(search,selectTypeBook);
+    },[search,selectTypeBook]);
     // xoa
     const handleDelete = async () => {
         try {
@@ -33,7 +44,7 @@ const BookList = () => {
     return (
         <div className="p-6">
             {/* Thanh tìm kiếm + nút thêm mới */}
-            <div className="flex justify-between mb-4">
+            <div className="flex justify-between mb-4 items-center">
                 <div className="flex space-x-2">
                     <input
                         type="text"
@@ -46,6 +57,23 @@ const BookList = () => {
                         Tìm
                     </button>
                 </div>
+                <div className="flex ">
+                    <select
+                        id="typeBookId"
+                        name="typeBookId"
+                        onChange={(e) => setselectTypeBook(e.target.value)}
+                        value={selectTypeBook}
+                        className="px-3 py-2 border rounded-lg w-52"
+                    >
+                        <option value="">-- Tất cả --</option>
+                        {typeBook.map((t) => (
+                            <option key={t.id} value={t.id}>
+                                {t.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
                 <button
                     onClick={() => navigate("/create")}
                     className="bg-green-500 text-white px-4 py-2 rounded-lg"
@@ -61,6 +89,7 @@ const BookList = () => {
                 <tr>
                     <th className="border p-2">Title</th>
                     <th className="border p-2">Quantity</th>
+                    <th className="border p-2">Type Book</th>
                     <th className="border p-2">Act</th>
                 </tr>
                 </thead>
@@ -70,6 +99,7 @@ const BookList = () => {
                         <td className="hidden border p-2 ">{b.id}</td>
                         <td className="border p-2">{b.title}</td>
                         <td className="border p-2">{b.quantity}</td>
+                        <td className="border p-2">{b.typeBook.name}</td>
                         <td className="border p-2">
                             <div className="flex justify-center items-center space-x-2">
                                 <button

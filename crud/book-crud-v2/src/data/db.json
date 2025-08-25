@@ -1,0 +1,10 @@
+{
+  "categories": [
+    { "id": 1, "name": "Lập trình", "description": "Sách kỹ thuật" },
+    { "id": 2, "name": "Kinh doanh", "description": "Marketing, quản trị" }
+  ],
+  "books": [
+    { "id": 1, "title": "Clean Code", "author": "Robert C. Martin", "price": 150000, "categoryId": 1 },
+    { "id": 2, "title": "Atomic Habits", "author": "James Clear", "price": 120000, "categoryId": 2 }
+  ]
+}

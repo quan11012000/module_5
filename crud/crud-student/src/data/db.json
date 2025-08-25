@@ -3,17 +3,42 @@
     {
       "id": 2,
       "title": "Tư duy ngược",
-      "quantity": 5
+      "quantity": "10",
+      "typeBookId": 1
     },
     {
       "title": "Đắc nhân tâm",
       "quantity": "3",
-      "id": 3
+      "id": 3,
+      "typeBookId": 1
     },
     {
       "title": "v",
       "quantity": "2",
-      "id": 4
+      "id": 4,
+      "typeBookId": 2
+    },
+    {
+      "title": "be ha",
+      "quantity": "2",
+      "typeBookId": "2",
+      "id": 5
+    },
+    {
+      "title": "con cho ha",
+      "quantity": "12",
+      "typeBookId": "2",
+      "id": 6
+    }
+  ],
+  "typeBooks": [
+    {
+      "id": 1,
+      "name": "Sách giáo khoa"
+    },
+    {
+      "id": 2,
+      "name": "Sách khoa học"
     }
   ]
 }

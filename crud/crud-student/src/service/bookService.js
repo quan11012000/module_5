@@ -1,12 +1,10 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:3000/books";
-export const getAllBookByTitle = async (title) => {
-    console.log(title);
+export const getAllBookByTitle = async (title,typeBookId) => {
     try{
-        const result = await axios.get(API_URL+`?title_like=${title}`);
+        const result = await axios.get(API_URL+`?_expand=typeBook&title_like=${title}&typeBookId_like=${typeBookId}`);
         return result.data;
-
     }catch(error){
         return [];
     }

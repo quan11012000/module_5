@@ -1,16 +1,24 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as bookService from "../service/bookService.js";
 import * as Yup from "yup";
 import {toast} from "react-toastify";
+import * as typeBookService from "../service/typeBookService.js";
 
 const BookCreate = () => {
     const [book, setBook] = useState({
         title:"",
         quantity:0
     });
-
+    const [typeBook, setTypeBook] = useState([]);
+    useEffect(() =>{
+        const getAllTypeBooks = async () => {
+            const temp = await typeBookService.getAllTypeBook();
+            setTypeBook(temp);
+        }
+        getAllTypeBooks();
+    },[])
     const navigate = useNavigate();
 
     const validationStudent = {
@@ -76,7 +84,28 @@ const BookCreate = () => {
                                 className="w-full border px-3 py-2 rounded mt-1"
                             />
                         </div>
-
+                        {/* typeBook */}
+                        <div>
+                            <div className="flex justify-between items-center">
+                                <label className="font-medium">Type Book</label>
+                                <ErrorMessage
+                                    name="typeBookId"
+                                    component="div"
+                                    className="text-red-500 text-sm"
+                                />
+                            </div>
+                            <Field
+                                as="select"
+                                name="typeBookId"
+                                className="w-full border px-3 py-2 rounded mt-1"
+                            >
+                                {typeBook.map((t) => (
+                                    <option key={t.id} value={t.id}>
+                                        {t.name}
+                                    </option>
+                                ))}
+                            </Field>
+                        </div>
 
 
                         {/* Submit */}
