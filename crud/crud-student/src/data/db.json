@@ -1,0 +1,19 @@
+{
+  "books": [
+    {
+      "id": 2,
+      "title": "Tư duy ngược",
+      "quantity": 5
+    },
+    {
+      "title": "Đắc nhân tâm",
+      "quantity": "3",
+      "id": 3
+    },
+    {
+      "title": "v",
+      "quantity": "2",
+      "id": 4
+    }
+  ]
+}
