@@ -19,7 +19,8 @@ const BookEdit = () => {
     const [book, setBook] = useState({
         title: "",
         quantity: 0,
-        typeBookId:1
+        typeBookId:1,
+        publicationDate :""
     });
     const {id} = useParams();
     const navigate = useNavigate();
@@ -90,6 +91,21 @@ const BookEdit = () => {
                             <Field
                                 name="quantity"
                                 type="text"
+                                className="w-full border px-3 py-2 rounded mt-1"
+                            />
+                        </div>
+                        <div>
+                            <div className="flex justify-between items-center">
+                                <label className="font-medium">Số lượng</label>
+                                <ErrorMessage
+                                    name="publicationDate"
+                                    component="div"
+                                    className="text-red-500 text-sm"
+                                />
+                            </div>
+                            <Field
+                                name="publicationDate"
+                                type="date"
                                 className="w-full border px-3 py-2 rounded mt-1"
                             />
                         </div>

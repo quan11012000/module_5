@@ -1,9 +1,17 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:3000/books";
-export const getAllBookByTitle = async (title,typeBookId) => {
+export const getAllBookByTitle = async (title,typeBookId,dateFirst,dateSencond) => {
     try{
-        const result = await axios.get(API_URL+`?_expand=typeBook&title_like=${title}&typeBookId_like=${typeBookId}`);
+        let query = `?_expand=typeBook&title_like=${title}&typeBookId_like=${typeBookId}`;
+        if(dateFirst !== ""){
+            query +=`&publicationDate_gte=${dateFirst}`
+        }
+
+        if( dateSencond !== ""){
+            query +=`&publicationDate_lte=${dateSencond}`
+        }
+        const result = await axios.get(API_URL+query);
         return result.data;
     }catch(error){
         return [];

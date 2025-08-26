@@ -4,31 +4,57 @@
       "id": 2,
       "title": "Tư duy ngược",
       "quantity": "10",
+      "publicationDate": "2000-10-12",
       "typeBookId": 1
     },
     {
       "title": "Đắc nhân tâm",
       "quantity": "3",
       "id": 3,
+      "publicationDate": "2000-10-12",
       "typeBookId": 1
     },
     {
       "title": "v",
       "quantity": "2",
       "id": 4,
+      "publicationDate": "2000-10-12",
       "typeBookId": 2
     },
     {
       "title": "be ha",
       "quantity": "2",
       "typeBookId": "2",
+      "publicationDate": "2000-10-12",
       "id": 5
     },
     {
       "title": "con cho ha",
       "quantity": "12",
       "typeBookId": "2",
+      "publicationDate": "2000-10-12",
       "id": 6
+    },
+    {
+      "title": "a",
+      "quantity": "1",
+      "publicationDate": "2025-08-25",
+      "typeBookId": "2",
+      "id": 7
+    },
+    {
+      "title": "a",
+      "quantity": "2",
+      "publicationDate": "2025-08-06",
+      "typeBookId": "2",
+      "id": 8
+    },
+    {
+      "title": "d",
+      "quantity": "1",
+      "publicationDate": "2025-08-03",
+      "typeBookId": "2",
+      "id": 9
     }
   ],
   "typeBooks": [

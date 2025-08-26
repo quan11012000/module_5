@@ -1,40 +1,42 @@
 import React, {useEffect, useState} from "react";
-import * as bookService from "../service/bookService.js";
-import * as typeBookService from "../service/typeBookService.js";
+import * as studentService from "../service/studentService.js";
+import * as classService from "../service/classService.js";
 import {useNavigate} from "react-router-dom";
 import {Field} from "formik";
+import {toast} from "react-toastify";
 
-const BookList = () => {
-    const [books, setBooks] = useState([]);
-    const [typeBook, setTypeBook] = useState([]);
+const List = () => {
+    const [students, setStudents] = useState([]);
+    const [classes, setclasses] = useState([]);
     const [deleteId, setDeleteId] = useState(0);
     const [dateFirst, setDateFirst] = useState("");
     const [dateSencond, setDateSencond] = useState("");
     const [search, setSsearch] = useState("");
-    const [selectTypeBook, setselectTypeBook] = useState("");
+    const [selectClass, setselectClass] = useState("");
     const navigate = useNavigate();
     //xoa
     const [open, setOpen] = useState(false);
     useEffect(() =>{
-        const getAllTypeBooks = async () => {
-            const temp = await typeBookService.getAllTypeBook();
-            setTypeBook(temp);
+        const getAll = async () => {
+            const temp = await classService.getAllType();
+            setclasses(temp);
         }
-        getAllTypeBooks();
+        getAll();
     },[])
     useEffect(() => {
-        const getAllBook = async (search,selectTypeBook,dateFirst,dateSencond) => {
-            const temp = await bookService.getAllBookByTitle(search,selectTypeBook,dateFirst,dateSencond);
-            setBooks(temp);
+        const getAll = async (search,selectClass,dateFirst,dateSencond) => {
+            const temp = await studentService.getAll(search,selectClass,dateFirst,dateSencond);
+            setStudents(temp);
         }
-        getAllBook(search,selectTypeBook,dateFirst,dateSencond);
-    },[search,selectTypeBook,dateFirst,dateSencond]);
+        getAll(search,selectClass,dateFirst,dateSencond);
+    },[search,selectClass,dateFirst,dateSencond]);
     // xoa
     const handleDelete = async () => {
         try {
-            await bookService.deleteBook(deleteId);
+            await studentService.deleteById(deleteId);
             setOpen(false);
-            setBooks(prevState => prevState.filter(book => book.id !== deleteId));
+            setStudents(prevState => prevState.filter(student => student.id !== deleteId));
+            toast.success("Xoá thành công");
         } catch (err) {
             console.error(err);
         }
@@ -61,14 +63,14 @@ const BookList = () => {
                 </div>
                 <div className="flex ">
                     <select
-                        id="typeBookId"
-                        name="typeBookId"
-                        onChange={(e) => setselectTypeBook(e.target.value)}
-                        value={selectTypeBook}
+                        id="classId"
+                        name="classId"
+                        onChange={(e) => setselectClass(e.target.value)}
+                        value={selectClass}
                         className="px-3 py-2 border rounded-lg w-52"
                     >
                         <option value="">-- Tất cả --</option>
-                        {typeBook.map((t) => (
+                        {classes.map((t) => (
                             <option key={t.id} value={t.id}>
                                 {t.name}
                             </option>
@@ -99,31 +101,37 @@ const BookList = () => {
             <table className="w-full border-collapse border border-gray-300 shadow-md">
                 <thead className="bg-gray-100 ">
                 <tr>
-                    <th className="border p-2">Title</th>
-                    <th className="border p-2">Quantity</th>
-                    <th className="border p-2">MenuFasteralDate</th>
-                    <th className="border p-2">Type Book</th>
-                    <th className="border p-2">Act</th>
+                    <th className="border p-2">Name</th>
+                    <th className="border p-2">Class</th>
+                    <th className="border p-2">Dob</th>
+                    <th className="border p-2">Gender</th>
+                    <th className="border p-2">Email</th>
+                    <th className="border p-2">AdmissionDate</th>
+                    <th className="border p-2">Status</th>
+                    <th className="border p-2">Avt</th>
                 </tr>
                 </thead>
                 <tbody>
-                {books.map((b) => (
-                    <tr key={b.id} className="hover:bg-gray-50 text-center">
-                        <td className="hidden border p-2 ">{b.id}</td>
-                        <td className="border p-2">{b.title}</td>
-                        <td className="border p-2">{b.quantity}</td>
-                        <td className="border p-2">{b.publicationDate} </td>
-                        <td className="border p-2">{b.typeBook.name}</td>
+                {students.map((s) => (
+                    <tr key={s.id} className="hover:bg-gray-50 text-center">
+                        <td className="hidden border p-2 ">{s.id}</td>
+                        <td className="border p-2">{s.name}</td>
+                        <td className="border p-2">{s.class.name}</td>
+                        <td className="border p-2">{s.dob} </td>
+                        <td className="border p-2">{s.gender}</td>
+                        <td className="border p-2">{s.email}</td>
+                        <td className="border p-2">{s.admissionDate} </td>
+                        <td className="border p-2">{s.status}</td>
                         <td className="border p-2">
                             <div className="flex justify-center items-center space-x-2">
                                 <button
-                                    onClick={() => navigate("/edit/"+b.id)}
+                                    onClick={() => navigate("/edit/"+s.id)}
                                     className="bg-yellow-500 text-white px-3 py-1 rounded-lg text-sm"
                                 >
                                     Sửa
                                 </button>
                                 <button
-                                    onClick={()=>handleOpenDeleteModal(b.id)}
+                                    onClick={()=>handleOpenDeleteModal(s.id)}
                                     className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm"
                                 >
                                     Xoá
@@ -162,4 +170,4 @@ const BookList = () => {
     );
 };
 
-export default BookList;
+export default List;

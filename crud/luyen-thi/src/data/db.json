@@ -1,0 +1,76 @@
+{
+  "tables": [
+    {
+      "id": 1,
+      "name": "Bàn 1",
+      "capacity": 4,
+      "location": "Tầng 1",
+      "status": "đang dùng"
+    },
+    {
+      "id": 2,
+      "name": "Bàn 2",
+      "capacity": 6,
+      "location": "Tầng 2",
+      "status": "trống"
+    }
+  ],
+  "orders": [
+    {
+      "id": 2,
+      "tableId": 2,
+      "item": "Trà đá",
+      "quantity": 4,
+      "price": 5000,
+      "status": "đã phục vụ",
+      "orderTime": "2025-08-26"
+    },
+    {
+      "tableId": "2",
+      "item": "Trà đá",
+      "quantity": 100,
+      "price": 20000,
+      "status": "đang chế biến",
+      "orderTime": "2025-08-20",
+      "note": "thêm nước mắm",
+      "id": 3
+    },
+    {
+      "tableId": "1",
+      "item": "Trà đá",
+      "quantity": 122,
+      "price": 12,
+      "status": "đã phục vụ",
+      "orderTime": "2025-08-21",
+      "id": 4
+    },
+    {
+      "tableId": 1,
+      "item": "Trà đá",
+      "quantity": 12,
+      "price": 2,
+      "status": "đã phục vụ",
+      "orderTime": "2025-08-20",
+      "note": "cay",
+      "id": 5
+    },
+    {
+      "tableId": 1,
+      "item": "Phở bò",
+      "quantity": 12,
+      "price": 12,
+      "status": "đang chế biến",
+      "orderTime": "2025-08-13",
+      "id": 6
+    },
+    {
+      "tableId": 1,
+      "item": "Trà chanh",
+      "quantity": 1,
+      "price": 25000,
+      "status": "đang chế biến",
+      "orderTime": "2025-08-21",
+      "id": 7
+    }
+  ]
+}

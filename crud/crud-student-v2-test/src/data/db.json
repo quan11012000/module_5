@@ -1,0 +1,50 @@
+{
+  "classes": [
+    {
+      "id": 1,
+      "name": "12A1",
+      "teacher": "Cô Lan",
+      "room": "101",
+      "status": "đang học"
+    },
+    {
+      "id": 2,
+      "name": "12A2",
+      "teacher": "Thầy Nam",
+      "room": "102",
+      "status": "đã kết thúc"
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "classId": 2,
+      "name": "Nguyễn Văn Huy",
+      "dob": "2007-03-12",
+      "gender": "nam",
+      "email": "huy.nguyen@example.com",
+      "admissionDate": "2023-09-05",
+      "status": "đang học"
+    },
+    {
+      "id": 2,
+      "classId": 1,
+      "name": "Trần Thị Linh",
+      "dob": "2007-07-22",
+      "gender": "nữ",
+      "email": "linh.tran@example.com",
+      "admissionDate": "2023-09-06",
+      "status": "đang học"
+    },
+    {
+      "name": "Huỳnh Thị Ngọc Trâm",
+      "classId": "2",
+      "dob": "2025-08-22",
+      "gender": "Nữ",
+      "email": "nguyentienquan12a4@gmail.com",
+      "admissionDate": "2025-08-28",
+      "status": "dang hoc",
+      "id": 4
+    }
+  ]
+}
